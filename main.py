@@ -1,30 +1,36 @@
+# importing libraries
 import time
 import math
 import csv
-
 import pandas
 from selenium import webdriver
 from tkinter import *
 
-
+# Create Window for GUI with size 450 * 380
 top = Tk()
-top.geometry("450x400")
-top.title("Aham Brahmasmi")
+top.geometry("450x380")
+top.title("KIWI Astra")
+top.maxsize(450, 380)
+top.minsize(450, 380)
 
-C = Canvas(top, bg="blue", height=250, width=300)
-filename = PhotoImage(file="C:\\Users\\jtg\\Desktop\\bg.png")
+# Set GUI background
+C = Canvas(top, bg="blue", height=10, width=20)
+filename = PhotoImage(file="C:\\Users\\jtg\\PycharmProjects\\kiwiautomate\\jtg.png")
 background_label = Label(top, image=filename)
-background_label.place(x=120, y=120, relwidth=1, relheight=1)
+background_label.place(x=0, y=0, relwidth=0.2, relheight=0.2)
 
+# Define Stringvar to get editbox inputs
 driver_var = StringVar()
 kiwiid_var = StringVar()
 kiwipassword_var = StringVar()
 path_var = StringVar()
 planURL_var = StringVar()
 
+# Message box to display messages and information about execution
 messagelabel = Label(top, text="")
 
 
+# Function to clean( add / character before newline and double quotes) string
 def cleanData(f):
     if type(f) == float and math.isnan(f):
         return "Empty data"
@@ -41,6 +47,8 @@ def cleanData(f):
             t += f[i]
     return t
 
+
+# function to read the data from csv and upload it to the kiwi using selenium
 
 def uploadData(a1, a2, a3, a4, a5):
     driver = webdriver.Chrome(executable_path=a1)
@@ -72,17 +80,21 @@ def uploadData(a1, a2, a3, a4, a5):
     # Create list of Module
     testModule = table['Module']
 
+    # Get elements access for login
     driver.maximize_window()
     driver.get('https://tcms.chqbook.com/accounts/login/')
     driver.find_element_by_xpath("//input[@type=\"text\"]").send_keys(a2)
     driver.find_element_by_xpath("//input[@type=\"password\"]").send_keys(a3)
     driver.find_element_by_xpath("//button[@type=\"submit\"]").click()
 
+    # check for login
     if driver.current_url == "https://tcms.chqbook.com/":
-
         index = []
 
+        # loop to access every row of the table
         for i in range(len(table)):
+
+            # store the row values and clean them
             crdesc = testDescription[i]
             crsteps = cleanData(testSteps[i])
             crpre = cleanData(testPrerequisite[i])
@@ -97,7 +109,11 @@ def uploadData(a1, a2, a3, a4, a5):
             try:
                 driver.get(a5)
 
-                if crdesc != "Empty data" and crexpected != "Empty data" and crsteps != "Empty data" and crpri != "Empty data":
+                # check that all the required entry are available
+                if crdesc != "Empty data" and crexpected != "Empty data" and crsteps != "Empty data" and \
+                        crpri != "Empty data":
+
+                    # access summary and priority element
                     driver.find_element_by_xpath("//input[@id=\"id_summary\"]").send_keys(crmodule + " : " + crdesc)
                     f = driver.find_element_by_xpath('//button[@data-id="id_priority"]')
                     f.click()
@@ -108,6 +124,7 @@ def uploadData(a1, a2, a3, a4, a5):
 
                     des = ""
 
+                    # combine test steps, test data, test prerequisite, test expected to desc to add it to summary
                     if crpre != "Empty data":
                         des += "**Prerequisite**\\n" + crpre + "\\n\\n"
 
@@ -120,24 +137,31 @@ def uploadData(a1, a2, a3, a4, a5):
                     if crexpected != "Empty data":
                         des += "**Expected Result**\\n" + crexpected + "\\n\\n"
 
+                    # access editor provided by Codemirror
                     p = driver.find_element_by_xpath("//div[@class=\"CodeMirror cm-s-paper CodeMirror-wrap\"]")
                     driver.execute_script("arguments[0].CodeMirror.setValue(\"" + des + "\");", p)
 
+                    #accessing notes element and adding notes if available
                     if crnotes != "Empty data":
                         driver.find_element_by_xpath('//textarea[@id="id_notes"]').send_keys(crnotes)
 
                     driver.find_element_by_xpath('//button[@type="submit"]').click()
+                # Store index of unsuccessful upload
                 else:
                     index.append(i)
+            # Store index of unsuccessful upload
             except:
                 print(sys.exc_info()[0])
                 index.append(i)
-
+        # close driver window after uploading ends
         driver.close()
+
+        # check for unsuccessful entry count
         if len(index) == 0:
-            messagelabel["text"] = "All testcases uploded successfully"
+            messagelabel["text"] = "All testcases uploaded successfully"
         else:
 
+            # creating csv for unsuccessful data entry
             header = list(table.columns)
             row = []
 
@@ -159,13 +183,13 @@ def uploadData(a1, a2, a3, a4, a5):
 
                 # writing the data rows
                 csvwriter.writerows(row)
-                messagelabel["text"] = "Test Cases Uploaded successfully! check folder for unsuccessfull upload"
+                messagelabel["text"] = "Test Cases Uploaded successfully! check folder for unsuccessful upload"
                 B["state"] = "normal"
     else:
         messagelabel["text"] = "Error while logging"
         B["state"] = "normal"
 
-
+# getting all edit box values on GUI
 def helloCallBack():
     a1, a2, a3, a4, a5 = driver_var.get(), kiwiid_var.get(), kiwipassword_var.get(), path_var.get(), planURL_var.get()
     if a1 == "" or a2 == "" or a3 == "" or a4 == "" or a5 == "":
@@ -176,20 +200,21 @@ def helloCallBack():
 
         uploadData(a1, a2, a3, a4, a5)
 
-
+# defining all the elements on the GUI
 B = Button(top, text="Upload Data", command=helloCallBack)
-driver_url = Label(top, text="Driver URL").place(x=30, y=50)
-kiwi_id = Label(top, text="Kiwi User name").place(x=30, y=90)
-kiwi_password = Label(top, text="Kiwi Password").place(x=30, y=130)
-testcase_file_path = Label(top, text="CSV file Path").place(x=30, y=170)
-testplan_URL = Label(top, text="Test Plan URL").place(x=30, y=210)
-e1 = Entry(top, textvariable=driver_var).place(x=150, y=50)
-e2 = Entry(top, textvariable=kiwiid_var).place(x=150, y=90)
-e3 = Entry(top, textvariable=kiwipassword_var).place(x=150, y=130)
-e4 = Entry(top, textvariable=path_var).place(x=150, y=170)
-e5 = Entry(top, textvariable=planURL_var).place(x=150, y=210)
+driver_url = Label(top, text="Driver URL").place(x=30, y=70)
+kiwi_id = Label(top, text="Kiwi User name").place(x=30, y=110)
+kiwi_password = Label(top, text="Kiwi Password").place(x=30, y=150)
+testcase_file_path = Label(top, text="CSV file Path").place(x=30, y=190)
+testplan_URL = Label(top, text="Test Plan URL").place(x=30, y=230)
+e1 = Entry(top, textvariable=driver_var, width=40).place(x=150, y=70)
+e2 = Entry(top, textvariable=kiwiid_var, width=40).place(x=150, y=110)
+e3 = Entry(top, textvariable=kiwipassword_var, width=40).place(x=150, y=150)
+e4 = Entry(top, textvariable=path_var, width=40).place(x=150, y=190)
+e5 = Entry(top, textvariable=planURL_var, width=40).place(x=150, y=230)
 
-B.place(x=150, y=250)
-messagelabel.place(x=10, y=280)
+B.place(x=170, y=270)
+messagelabel.place(x=10, y=300)
 
+# running the GUI interface
 top.mainloop()
