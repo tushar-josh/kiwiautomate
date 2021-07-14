@@ -1,0 +1,19 @@
+Test Case ID,Module,Prerequisite,Test case description,Test Steps,Test Data,Priority,Expected Result,Actual Result,Status,Notes,Defect ID
+nan,Install,nan,"Install
+Size
+Permissions
+Logo
+",nan,nan,nan,nan,nan,nan,nan,nan
+CHQ-15,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate if user received the OTP instantly after making the request.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Keep ""I would like to receive updates from chqbook over whatsapp"" consent unselected.
+4 - Click on ""Send OTP"" button.
+5 - Wait for 1 minute to get ""Resend"" button enabled.
+6 - Click on the ""Resend"" Button.",nan,nan,?,nan,nan,nan,nan
+CHQ-22,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate if user make a request for OTP from two different devices for a same mobile number at the same time.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Repeat step 1- 3 with same mobile number on another device in parallel.
+5 - Enter the same OTP in both the devices.",nan,P1,nan,nan,nan,nan,nan

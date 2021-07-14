@@ -1,0 +1,26 @@
+Test summary,Test Description
+Validate that user got the recommendation from Google toolkit for the mobile number avaialble on device at login page.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Enter the OTP reveive on the given mobile number via SMS in ""Enter OTP"" input box.
+5 - Click on the ""Verify and Continue"" button."
+Validate if new user can login with valid mobile number and Valid OTP.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Enter the OTP reveive on the given mobile number via SMS in ""Enter OTP"" input box.
+5 - Click on the ""Verify and Continue"" button."
+Validate if existing user can login with valid mobile number.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Enter the OTP reveive on the given mobile number via SMS in ""Enter OTP"" input box.
+5 - Click on the ""Verify and Continue"" button."
+Validate if user can login with a invalid mobile number.,"1 - Install the application and open it.
+2 - Enter the invalid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button."
+Validate if user can login with correct mobile number and incorrect OTP,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Enter the 4 digit random OTP other than the received one on the given mobile number via SMS in ""Enter OTP"" input box.
+5 - Click on the ""Verify and Continue"" button."
+Test case 6,Desc6
+Test case 7,Desc7

@@ -1,0 +1,142 @@
+Test Case ID,Module,Prerequisite,Test case description,Test Steps,Test Data,Priority,Expected Result,Actual Result,Status,Notes,Defect ID
+nan,Install,nan,"Install
+Size
+Permissions
+Logo
+",nan,nan,nan,nan,nan,nan,nan,nan
+CHQ-01,Login,"1 - User must have app installed.
+2. For UAT and Staging app- VPN must be ""ON""",Validate that user got the recommendation from Google toolkit for the mobile number avaialble on device at login page.,"1 - Install the application and open it.
+2- Tap on ""Mobile Number"" field",nan,P2,"1. Google Toolkit should display mobile number available in the device
+2. User should be able to select mobile number from Google Toolkit",nan,nan,nan,nan
+CHQ-02,Login,"1 - User must have app installed.
+2. For UAT and Staging app- VPN must be ""ON""",Validate if new user can login with valid mobile number and Valid OTP.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Enter the OTP reveive on the given mobile number via SMS in ""Enter OTP"" input box.
+5 - Click on the ""Verify and Continue"" button.",nan,P1,User should get logged in successfully and should get a option to select the language for the application.,nan,nan,"UAT/ Staging: any 4 digit OTP will work
+
+Prod: Actual OTP gets autofilled from SMS received",nan
+CHQ-03,Login,"1 - User must have app installed.
+2. For UAT and Staging app- VPN must be ""ON""",Validate if existing user can login with valid mobile number.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Enter the OTP reveive on the given mobile number via SMS in ""Enter OTP"" input box.
+5 - Click on the ""Verify and Continue"" button.",nan,P1,User should get logged in successfully and should navigates to the Chqbook Dashboard.,nan,nan,nan,nan
+CHQ-04,Login,"1 - User must have app installed.
+2. For UAT and Staging app- VPN must be ""ON""",Validate if user can login with a invalid mobile number.,"1 - Install the application and open it.
+2 - Enter the invalid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.","1. Mobile number stttrting with digits 0-5
+2. Less than 10 digits ",P1,"1. User should get an error message to input a valid mobile number.
+Error message: ""Please enter a valid mobile number""
+
+2. ""Send OTP"" button should b=not be available if user enters less than 10 digits",nan,nan,nan,nan
+CHQ-05,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate if user can login with correct mobile number and incorrect OTP,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Enter the 4 digit random OTP other than the received one on the given mobile number via SMS in ""Enter OTP"" input box.
+5 - Click on the ""Verify and Continue"" button.",nan,P1,User should get an error message to enter the correct OTP.,nan,nan,nan,nan
+CHQ-06,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate if user can login with correct mobile number and blank OTP.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Keep the ""Enter OTP"" input box blank.
+5 - Click on the ""Verify and Continue"" button.",nan,P1,User shoud get an error message to enter teh OTP.,nan,nan,nan,nan
+CHQ-07,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate if user can view Term and conditions.,"1 - Install the application and open it.
+2 - Click on the Term and conditions link.",nan,P2,"User should get navigates to the ""Term and Condition"" Page with all the details.",nan,nan,nan,nan
+CHQ-08,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""","Validate if user can make a login keeping ""I would like to receive updates from chqbook over whatsapp"" unselected","1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Keep ""I would like to receive updates from chqbook over whatsapp"" consent unselected.
+4 - Click on ""Send OTP"" button.
+5 - Enter the OTP reveive on the given mobile number via SMS in ""Enter OTP"" input box.
+6 - Click on the ""Verify and Continue"" button.",nan,P3,User should be able to login into the account and user should not get update on the whatsapp.,nan,nan,nan,nan
+CHQ-09,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""","Validate if user can make a login keeping ""I would like to receive updates from chqbook over whatsapp"" selected","1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Keep ""I would like to receive updates from chqbook over whatsapp"" consent selected. 
+4 - Click on ""Send OTP"" button.
+5 - Enter the OTP reveive on the given mobile number via SMS in ""Enter OTP"" input box.
+6 - Click on the ""Verify and Continue"" button.",nan,P3,User should be able to login into the account and user should get update on the whatsapp.,nan,nan,nan,nan
+CHQ-10,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate if user press the back button on the enter OTP button,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Press the back button.",nan,P1,"User should gets navigate on the ""Enter Mobile Number"" page.",nan,nan,nan,nan
+CHQ-11,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate if the user lost their internet connection in between.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Turn off the internet connection.
+4 - Click on ""Send OTP"" button.",nan,P1,"Toast message should get displayed saying ""You are offline""",nan,nan,nan,nan
+CHQ-12,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""","Validate if user click on the ""Send OTP"" button more than once one after another fastly.","1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button continously for 3 times fastly.",nan,P2,"User should not be allowed to hit the button while its already processing, button should be disabled for that processing time.",nan,nan,nan,nan
+CHQ-13,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""","Validate if user can ""Resend"" the OTP instantly after getting first OTP.","1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Keep ""I would like to receive updates from chqbook over whatsapp"" consent unselected.
+4 - Click on ""Send OTP"" button.
+5 - Click on the ""Resend"" Button.",nan,P1,Resend button should be disabled and user should not be allowed to get the OTP again before 1 minute.,nan,nan,nan,nan
+CHQ-14,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""","Validate if user can ""Resend"" the OTP after 1 minute of getting first OTP.","1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Keep ""I would like to receive updates from chqbook over whatsapp"" consent unselected.
+4 - Click on ""Send OTP"" button.
+5 - Wait for 1 minute to get ""Resend"" button enabled.
+6 - Click on the ""Resend"" Button.",nan,P1,User should get a new OTP again.,nan,nan,nan,nan
+CHQ-15,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate if user received the OTP instantly after making the request.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Keep ""I would like to receive updates from chqbook over whatsapp"" consent unselected.
+4 - Click on ""Send OTP"" button.
+5 - Wait for 1 minute to get ""Resend"" button enabled.
+6 - Click on the ""Resend"" Button.",nan,nan,?,nan,nan,nan,nan
+CHQ-16,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""","Validate that alphabet and special characters is not allowed for the ""Enter Mobile number"" input box ","1 - Install the application and open it.
+2 - Click on the ""Enter Mobile number"" input box.",nan,P2,User should get an numeric keyboard and should not allowed to enter alphabet and special characters,nan,nan,nan,nan
+CHQ-17,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""","Validate that alphabet is not allowed for the ""Enter OTP"" input box ","1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Keep ""I would like to receive updates from chqbook over whatsapp"" consent unselected.
+4 - Click on ""Send OTP"" button.",nan,P2,User should get an numeric keyboard and should not allowed to enter alphabet.,nan,nan,nan,nan
+CHQ-18,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate that OTP is valid after 10 minutes of receiving.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Keep ""I would like to receive updates from chqbook over whatsapp"" consent unselected.
+4 - Click on ""Send OTP"" button.
+5 - Wait for 10 minute.
+6 - Click on the ""Verify and Submit"" Button.",nan,P1,User should not be allowd to enter the OTP which is received 10 min earlier.,nan,nan,nan,nan
+CHQ-19,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate that user can input invalid OTP as many as time as he want.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Keep ""I would like to receive updates from chqbook over whatsapp"" consent unselected.
+4 - Click on ""Send OTP"" button.
+5 - Enter invalid OTP.
+6 - Click on the ""Verify and Submit"" Button.
+7 - Re-run the step 5 and 6 for more than 5 times.",nan,P2,User should not be allowed to input invalid OTP as many as time as he want either he should get blocked for some moment.,nan,nan,nan,nan
+CHQ-20,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate same OTP does not allow user to log in two times continously(One after another).,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Keep ""I would like to receive updates from chqbook over whatsapp"" consent unselected.
+4 - Click on ""Send OTP"" button.
+5 - Enter invalid OTP.
+6 - Click on the ""Verify and Submit"" Button.
+7 - Navigate to Setting Page and click logout button.
+8 - Enter the same mobile number in ""Enter Mobile number"" input box.
+9 - Now enter the previous OTP that you have entered.
+10 - Click on ""Verify and Submit"" button.",nan,P1,User should not be allowed to loginin again into the account and should get an error message that OTP is not verified.,nan,nan,nan,nan
+CHQ-21,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate if user login into the another device with same mobile number.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Enter the OTP reveive on the given mobile number via SMS in ""Enter OTP"" input box.
+5 - Click on the ""Verify and Continue"" button.
+6 - Repeat step 1- 5 with same mobile number on another device.",nan,P1,User should not be allowed to login in into the another device and an error message should be shown that the user is already logged in into the another device. ,nan,nan,nan,nan
+CHQ-22,Login,"1 - User must have app installed.
+2 - For UAT and Staging app- VPN must be ""ON""",Validate if user make a request for OTP from two different devices for a same mobile number at the same time.,"1 - Install the application and open it.
+2 - Enter the valid mobile number in the ""Enter mobile number"" input box.
+3 - Click on ""Send OTP"" button.
+4 - Repeat step 1- 3 with same mobile number on another device in parallel.
+5 - Enter the same OTP in both the devices.",nan,P1,nan,nan,nan,nan,nan
